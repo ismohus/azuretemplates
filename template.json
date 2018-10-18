@@ -1,0 +1,176 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string"
+        },
+        "storageAccountName": {
+            "type": "string"
+        },
+        "accountType": {
+            "type": "string"
+        },
+        "kind": {
+            "type": "string"
+        },
+        "accessTier": {
+            "type": "string"
+        },
+        "supportsHttpsTrafficOnly": {
+            "type": "bool"
+        },
+        "networkAclsBypass": {
+            "type": "string"
+        },
+        "networkAclsDefaultAction": {
+            "type": "string"
+        },
+        "networkAclsVirtualNetworkRules": {
+            "type": "array"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "apiVersion": "2017-05-10",
+            "type": "Microsoft.Resources/deployments",
+            "name": "updateVirtualNetworkCreateStorageAccount",
+            "resourceGroup": "RG-Ihu-Vnet1",
+            "properties": {
+                "mode": "Incremental",
+                "parameters": {},
+                "template": {
+                    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "apiVersion": "2018-08-01",
+                            "name": "ihu-vnet1",
+                            "type": "Microsoft.Network/virtualNetworks",
+                            "location": "northeurope",
+                            "properties": {
+                                "provisioningState": "Succeeded",
+                                "resourceGuid": "db631246-d574-4992-aef3-7e3e44ceac12",
+                                "addressSpace": {
+                                    "addressPrefixes": [
+                                        "192.168.0.0/16"
+                                    ]
+                                },
+                                "subnets": [
+                                    {
+                                        "name": "Vnet1-Subnet1",
+                                        "id": "/subscriptions/3fdf4b79-028f-4be2-b483-f95aa5b97968/resourceGroups/RG-Ihu-Vnet1/providers/Microsoft.Network/virtualNetworks/ihu-vnet1/subnets/Vnet1-Subnet1",
+                                        "etag": "W/\"df80d8c2-52a3-43d7-b5ff-d1154d552d3b\"",
+                                        "properties": {
+                                            "provisioningState": "Succeeded",
+                                            "addressPrefix": "192.168.1.0/24",
+                                            "ipConfigurations": [
+                                                {
+                                                    "id": "/subscriptions/3fdf4b79-028f-4be2-b483-f95aa5b97968/resourceGroups/Ihu-Servers/providers/Microsoft.Network/networkInterfaces/ihuws2016-1973/ipConfigurations/ipconfig1"
+                                                },
+                                                {
+                                                    "id": "/subscriptions/3fdf4b79-028f-4be2-b483-f95aa5b97968/resourceGroups/Ihu-Servers/providers/Microsoft.Network/networkInterfaces/ihuws2016-2130/ipConfigurations/ipconfig1"
+                                                }
+                                            ],
+                                            "serviceEndpoints": [
+                                                {
+                                                    "service": "Microsoft.Storage"
+                                                }
+                                            ],
+                                            "delegations": []
+                                        },
+                                        "type": "Microsoft.Network/virtualNetworks/subnets"
+                                    },
+                                    {
+                                        "name": "Vnet1-Subnet2",
+                                        "id": "/subscriptions/3fdf4b79-028f-4be2-b483-f95aa5b97968/resourceGroups/RG-Ihu-Vnet1/providers/Microsoft.Network/virtualNetworks/ihu-vnet1/subnets/Vnet1-Subnet2",
+                                        "etag": "W/\"df80d8c2-52a3-43d7-b5ff-d1154d552d3b\"",
+                                        "properties": {
+                                            "provisioningState": "Succeeded",
+                                            "addressPrefix": "192.168.2.0/24",
+                                            "serviceEndpoints": [
+                                                {
+                                                    "service": "Microsoft.Storage"
+                                                }
+                                            ],
+                                            "delegations": []
+                                        },
+                                        "type": "Microsoft.Network/virtualNetworks/subnets"
+                                    },
+                                    {
+                                        "name": "GatewaySubnet",
+                                        "id": "/subscriptions/3fdf4b79-028f-4be2-b483-f95aa5b97968/resourceGroups/RG-Ihu-Vnet1/providers/Microsoft.Network/virtualNetworks/ihu-vnet1/subnets/GatewaySubnet",
+                                        "etag": "W/\"df80d8c2-52a3-43d7-b5ff-d1154d552d3b\"",
+                                        "properties": {
+                                            "provisioningState": "Succeeded",
+                                            "addressPrefix": "192.168.255.224/27",
+                                            "serviceEndpoints": [],
+                                            "delegations": []
+                                        },
+                                        "type": "Microsoft.Network/virtualNetworks/subnets"
+                                    }
+                                ],
+                                "virtualNetworkPeerings": [
+                                    {
+                                        "name": "VNet1-VNet2",
+                                        "id": "/subscriptions/3fdf4b79-028f-4be2-b483-f95aa5b97968/resourceGroups/RG-Ihu-Vnet1/providers/Microsoft.Network/virtualNetworks/ihu-vnet1/virtualNetworkPeerings/VNet1-VNet2",
+                                        "etag": "W/\"df80d8c2-52a3-43d7-b5ff-d1154d552d3b\"",
+                                        "properties": {
+                                            "provisioningState": "Succeeded",
+                                            "peeringState": "Connected",
+                                            "remoteVirtualNetwork": {
+                                                "id": "/subscriptions/3fdf4b79-028f-4be2-b483-f95aa5b97968/resourceGroups/RG-Ihu-Vnet2/providers/Microsoft.Network/virtualNetworks/ihu-vnet2"
+                                            },
+                                            "allowVirtualNetworkAccess": true,
+                                            "allowForwardedTraffic": false,
+                                            "allowGatewayTransit": false,
+                                            "useRemoteGateways": false,
+                                            "remoteAddressSpace": {
+                                                "addressPrefixes": [
+                                                    "10.0.0.0/16"
+                                                ]
+                                            },
+                                            "routeServiceVips": {}
+                                        },
+                                        "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
+                                    }
+                                ],
+                                "enableDdosProtection": false,
+                                "enableVmProtection": false
+                            },
+                            "tags": {}
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        },
+        {
+            "name": "[parameters('storageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "accessTier": "[parameters('accessTier')]",
+                "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]",
+                "networkAcls": {
+                    "bypass": "[parameters('networkAclsBypass')]",
+                    "defaultAction": "[parameters('networkAclsDefaultAction')]",
+                    "ipRules": [],
+                    "virtualNetworkRules": "[parameters('networkAclsVirtualNetworkRules')]"
+                }
+            },
+            "dependsOn": [
+                "Microsoft.Resources/deployments/updateVirtualNetworkCreateStorageAccount"
+            ],
+            "sku": {
+                "name": "[parameters('accountType')]"
+            },
+            "kind": "[parameters('kind')]"
+        }
+    ],
+    "outputs": {}
+}

@@ -1,0 +1,40 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "northeurope"
+        },
+        "storageAccountName": {
+            "value": "ihucoolstorage1"
+        },
+        "accountType": {
+            "value": "Standard_LRS"
+        },
+        "kind": {
+            "value": "StorageV2"
+        },
+        "accessTier": {
+            "value": "Cool"
+        },
+        "supportsHttpsTrafficOnly": {
+            "value": true
+        },
+        "networkAclsBypass": {
+            "value": "AzureServices"
+        },
+        "networkAclsDefaultAction": {
+            "value": "Deny"
+        },
+        "networkAclsVirtualNetworkRules": {
+            "value": [
+                {
+                    "id": "/subscriptions/3fdf4b79-028f-4be2-b483-f95aa5b97968/resourceGroups/RG-Ihu-Vnet1/providers/Microsoft.Network/virtualNetworks/ihu-vnet1/subnets/Vnet1-Subnet1"
+                },
+                {
+                    "id": "/subscriptions/3fdf4b79-028f-4be2-b483-f95aa5b97968/resourceGroups/RG-Ihu-Vnet1/providers/Microsoft.Network/virtualNetworks/ihu-vnet1/subnets/Vnet1-Subnet2"
+                }
+            ]
+        }
+    }
+}
