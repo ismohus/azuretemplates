@@ -6,7 +6,7 @@
             "value": "northeurope"
         },
         "storageAccountName": {
-            "value": "ihucoolstorage1"
+            "value": "ihucoolstorage2"
         },
         "accountType": {
             "value": "Standard_LRS"
